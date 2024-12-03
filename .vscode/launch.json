@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "tarathep_first_app",
+            "cwd": "tarathep_first_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "tarathep_first_app (profile mode)",
+            "cwd": "tarathep_first_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tarathep_first_app (release mode)",
+            "cwd": "tarathep_first_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "tarathep_widgets_exercises",
+            "cwd": "tarathep_widgets_exercises",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "tarathep_widgets_exercises (profile mode)",
+            "cwd": "tarathep_widgets_exercises",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tarathep_widgets_exercises (release mode)",
+            "cwd": "tarathep_widgets_exercises",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
