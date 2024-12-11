@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           body: Center(
         child: CustomFont(
-          text: 'Tarathep Butka',
+          text: 'ธราเทพ บุตกะ',
           fontFamily: 'Prompt',
           fontSize: 32.0,
           fontWeight: FontWeight.bold,
