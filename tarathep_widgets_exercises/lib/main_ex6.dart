@@ -8,21 +8,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('StatefulWidget: Random'),
-          backgroundColor: const Color.fromARGB(255, 239, 204, 97),
-          centerTitle: true,
-        ),
-        body: const CustomFont(
+          body: Center(
+        child: CustomFont(
           text: 'Tarathep Butka',
           fontFamily: 'Prompt',
           fontSize: 32.0,
           fontWeight: FontWeight.bold,
         ),
-      ),
+      )),
     );
   }
 }
