@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'screens/profile_screen.dart';
+import 'screens/profile_witn_button.dart';
 
 void main() => runApp(const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Profile Screen",
-      home: ProfileScreen(
+      home: ProfileWithButton(
         name: "Tarathep",
         id: "653040452-2",
         imagePath: "assets/gintama.jpg",

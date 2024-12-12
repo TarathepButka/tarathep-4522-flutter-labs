@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tarathep_widgets_exercises/widgets/submit_button.dart';
 import '../widgets/local_image_asset.dart';
 import '../widgets/custom_text_row.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileWithButton extends StatelessWidget {
   final String name;
   final String id;
   final String imagePath;
@@ -10,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
   final double imageHeight;
   final String photoCreditOwner;
 
-  const ProfileScreen(
+  const ProfileWithButton(
       {super.key,
       required this.name,
       required this.id,
@@ -21,9 +22,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 47, 46, 46),
-        body: Column(
+    return Card(
+        color: const Color.fromARGB(255, 47, 46, 46),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextRow(
@@ -37,7 +38,10 @@ class ProfileScreen extends StatelessWidget {
             CustomTextRow(
               text1: "Photo Credit:",
               text2: photoCreditOwner,
-            )
+            ),
+            Container(
+                margin: const EdgeInsets.only(top: 40),
+                child: const SubmitButton())
           ],
         ));
   }
