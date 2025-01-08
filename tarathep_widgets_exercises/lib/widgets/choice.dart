@@ -13,10 +13,12 @@ class Choice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return Container(
-        width: 160,
+        width: isPortrait ? 160 : 300,
         height: 60,
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.all(isPortrait ? 10 : 0),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: backgroundcolor,

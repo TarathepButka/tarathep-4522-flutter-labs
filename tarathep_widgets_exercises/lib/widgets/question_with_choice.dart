@@ -14,6 +14,8 @@ class QuestionWithChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Center(
@@ -30,7 +32,8 @@ class QuestionWithChoice extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-            Image.asset(imagepath, height: 200, fit: BoxFit.cover),
+            Image.asset(imagepath,
+                height: isPortrait ? 200 : 160, fit: BoxFit.cover),
             const SizedBox(height: 30),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

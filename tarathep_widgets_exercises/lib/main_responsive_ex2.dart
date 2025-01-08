@@ -18,7 +18,7 @@ class ResponsiveQuizApp extends StatelessWidget {
       title: 'Responsive Exercise',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
-        appBar: AppBar(title: isPortrait ? const Text(appTitle) : null),
+        appBar: isPortrait ? AppBar(title: const Text(appTitle)) : null,
         body: const QuestionWithChoice(
           question: "Where is the picture?",
           imagepath: "assets/kku.jpg",
