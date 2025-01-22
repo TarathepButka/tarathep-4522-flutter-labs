@@ -3,11 +3,11 @@ import 'package:tarathep_interactivity_exercises/widgets/interact_quiz_question.
 import 'package:tarathep_interactivity_exercises/widgets/interact_question.dart';
 
 void main() {
-  runApp(const ResponsiveQuizApp());
+  runApp(const InteractiveQuizApp());
 }
 
-class ResponsiveQuizApp extends StatelessWidget {
-  const ResponsiveQuizApp({super.key});
+class InteractiveQuizApp extends StatelessWidget {
+  const InteractiveQuizApp({super.key});
   @override
   Widget build(BuildContext context) {
     final bool isPortrait =
@@ -15,7 +15,7 @@ class ResponsiveQuizApp extends StatelessWidget {
     const String appTitle = "Quiz App by 653040452-2";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Responsive Exercise',
+      title: 'Interactivity Exercise',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         appBar: isPortrait ? AppBar(title: const Text(appTitle)) : null,
