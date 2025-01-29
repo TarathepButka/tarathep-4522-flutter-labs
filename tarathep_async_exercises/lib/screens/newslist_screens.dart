@@ -25,10 +25,8 @@ class _NewslistScreenState extends State<NewslistScreen> {
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
       setState(() {
-        news = data
-            .map((newsItem) => News.fromJson(newsItem))
-            .where((newsItem) => newsItem.id >= 1 && newsItem.id <= 100)
-            .toList();
+        news =
+            List.generate(data.length, (index) => News.fromJson(data[index]));
       });
     } else {
       throw Exception('Failed to load albums');
