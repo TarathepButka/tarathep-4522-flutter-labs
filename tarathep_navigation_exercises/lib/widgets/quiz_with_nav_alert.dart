@@ -86,17 +86,19 @@ class _MyQuestionState extends State<MyQuestion> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         QChoice(
-                          text: choice[0],
-                          background: Colors.purple,
-                          foreground: Colors.white,
-                          isCorrect: corrects[0],
-                        ),
+                            text: choice[0],
+                            background: Colors.purple,
+                            foreground: Colors.white,
+                            isCorrect: corrects[0],
+                            nextQuestion: nextQuestion ?? Container(),
+                            num: widget.num),
                         QChoice(
-                          text: choice[1],
-                          background: Colors.orange,
-                          foreground: Colors.white,
-                          isCorrect: corrects[1],
-                        )
+                            text: choice[1],
+                            background: Colors.orange,
+                            foreground: Colors.white,
+                            isCorrect: corrects[1],
+                            nextQuestion: nextQuestion ?? Container(),
+                            num: widget.num)
                       ],
                     ),
                     const SizedBox(
@@ -106,17 +108,19 @@ class _MyQuestionState extends State<MyQuestion> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         QChoice(
-                          text: choice[2],
-                          background: Colors.pink,
-                          foreground: Colors.white,
-                          isCorrect: corrects[2],
-                        ),
+                            text: choice[2],
+                            background: Colors.pink,
+                            foreground: Colors.white,
+                            isCorrect: corrects[2],
+                            nextQuestion: nextQuestion ?? Container(),
+                            num: widget.num),
                         QChoice(
-                          text: choice[3],
-                          background: Colors.blue,
-                          foreground: Colors.white,
-                          isCorrect: corrects[3],
-                        )
+                            text: choice[3],
+                            background: Colors.blue,
+                            foreground: Colors.white,
+                            isCorrect: corrects[3],
+                            nextQuestion: nextQuestion ?? Container(),
+                            num: widget.num)
                       ],
                     ),
                     SizedBox(height: 80),

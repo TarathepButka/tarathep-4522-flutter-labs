@@ -4,6 +4,8 @@ class QChoice extends StatefulWidget {
   final String text;
   final Color foreground, background;
   final bool isCorrect;
+  final Widget nextQuestion;
+  final int num;
 
   const QChoice({
     super.key,
@@ -11,6 +13,8 @@ class QChoice extends StatefulWidget {
     this.foreground = Colors.white,
     this.background = Colors.white,
     this.isCorrect = false,
+    required this.nextQuestion,
+    required this.num,
   });
 
   @override
@@ -37,7 +41,7 @@ class _QChoiceState extends State<QChoice> {
         score = 0;
       }
       backgroundColor = widget.isCorrect ? Colors.green : Colors.red;
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(Duration(milliseconds: 50), () {
         _showDialog(context, score, isCorrect);
       });
     });
@@ -71,7 +75,45 @@ class _QChoiceState extends State<QChoice> {
         MediaQuery.of(context).orientation == Orientation.portrait;
 
     return GestureDetector(
-      onTap: () => _handleTap(context, widget.isCorrect),
+      onTap: () async {
+        _handleTap(context, widget.isCorrect);
+        await Future.delayed(Duration(seconds: 2));
+        if (widget.num != 3) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => widget.nextQuestion,
+            ),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Scaffold(
+                body: Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        side: BorderSide(color: Colors.orangeAccent),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (route) => false);
+                    },
+                    child: Text('Restart',
+                        style: TextStyle(
+                            fontSize: 32,
+                            color: Colors.orange,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+      },
       child: Container(
         width: isPortrait ? 160 : 280,
         height: isPortrait ? 80 : 50,
