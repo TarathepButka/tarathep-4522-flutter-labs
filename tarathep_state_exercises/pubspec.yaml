@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   path_provider: ^2.1.5
   provider: ^6.1.2
+  sqflite: ^2.4.1
+  path: ^1.8.0
   tarathep_navigation_exercises:
     path: /tarathep-4522-flutter-labs/tarathep_navigation_exercises
 
