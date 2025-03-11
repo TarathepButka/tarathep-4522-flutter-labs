@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tarathep_state_exercises/state/quiz_state.dart';
-import '../screen/quiz_stat_screen.dart';
 
 class QChoice extends StatefulWidget {
   final String text;
   final Color foreground, background;
   final bool isCorrect;
-  final Widget nextQuestion;
-  final int num;
+  final VoidCallback callback;
 
   const QChoice({
     super.key,
@@ -16,8 +14,7 @@ class QChoice extends StatefulWidget {
     this.foreground = Colors.white,
     this.background = Colors.white,
     this.isCorrect = false,
-    required this.nextQuestion,
-    required this.num,
+    required this.callback,
   });
 
   @override
@@ -46,8 +43,9 @@ class _QChoiceState extends State<QChoice> {
         score = 0;
       }
       backgroundColor = widget.isCorrect ? Colors.green : Colors.red;
-      Future.delayed(Duration(milliseconds: 50), () {
-        _showDialog(context, score, isCorrect);
+      _showDialog(context, score, isCorrect);
+      Future.delayed(Duration(milliseconds: 500), () {
+        widget.callback();
       });
     });
   }
@@ -82,20 +80,6 @@ class _QChoiceState extends State<QChoice> {
     return GestureDetector(
       onTap: () async {
         _handleTap(context, widget.isCorrect);
-        await Future.delayed(Duration(seconds: 2));
-        if (widget.num != 3) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => widget.nextQuestion,
-            ),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => QuizStatScreen()),
-          );
-        }
       },
       child: Container(
         width: isPortrait ? 160 : 280,

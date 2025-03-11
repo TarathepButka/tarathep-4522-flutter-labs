@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screen/quiz_stat_screen.dart';
 import 'question_alert_stat.dart';
 
 class MyQuestion extends StatefulWidget {
@@ -31,11 +30,21 @@ class _MyQuestionState extends State<MyQuestion> {
     if (widget.num > 1 && widget.num <= widget.info.length) {
       previous = true;
     }
+  }
+
+  void gotoNextQuestion() {
     if (widget.num < widget.info.length) {
-      nextQuestion = MyQuestion(
-        num: widget.num + 1,
-        info: widget.info,
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyQuestion(
+            num: widget.num + 1,
+            info: widget.info,
+          ),
+        ),
       );
+    } else {
+      Navigator.pushNamed(context, '/restart');
     }
   }
 
@@ -91,15 +100,13 @@ class _MyQuestionState extends State<MyQuestion> {
                             background: Colors.purple,
                             foreground: Colors.white,
                             isCorrect: corrects[0],
-                            nextQuestion: nextQuestion ?? Container(),
-                            num: widget.num),
+                            callback: gotoNextQuestion),
                         QChoice(
                             text: choice[1],
                             background: Colors.orange,
                             foreground: Colors.white,
                             isCorrect: corrects[1],
-                            nextQuestion: nextQuestion ?? Container(),
-                            num: widget.num)
+                            callback: gotoNextQuestion)
                       ],
                     ),
                     const SizedBox(
@@ -113,15 +120,13 @@ class _MyQuestionState extends State<MyQuestion> {
                             background: Colors.pink,
                             foreground: Colors.white,
                             isCorrect: corrects[2],
-                            nextQuestion: nextQuestion ?? Container(),
-                            num: widget.num),
+                            callback: gotoNextQuestion),
                         QChoice(
                             text: choice[3],
                             background: Colors.blue,
                             foreground: Colors.white,
                             isCorrect: corrects[3],
-                            nextQuestion: nextQuestion ?? Container(),
-                            num: widget.num)
+                            callback: gotoNextQuestion)
                       ],
                     ),
                     SizedBox(height: 80),
@@ -163,12 +168,7 @@ class _MyQuestionState extends State<MyQuestion> {
                           maintainState: true,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        nextQuestion ?? QuizStatScreen()),
-                              );
+                              gotoNextQuestion();
                             },
                             child: const Text(
                               'Next',
