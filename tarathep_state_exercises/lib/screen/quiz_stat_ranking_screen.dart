@@ -45,7 +45,7 @@ class RealtimeDatabase {
       });
       scores.sort((a, b) => int.parse(b.score!).compareTo(int.parse(a.score!)));
       debugPrint(scores.toString());
-      return scores;
+      return scores.take(3).toList(); // Return only top 3 scores
     }
     return [];
   }
@@ -141,6 +141,7 @@ class QuizStatScreenState extends State<QuizStatRankScreen> {
                 Column(
                   children: _listrankScore.isNotEmpty
                       ? _listrankScore
+                          .take(3)
                           .map((e) => Text(
                                 'Manee ${e.score}',
                                 style: TextStyle(fontSize: 24),
@@ -177,6 +178,7 @@ class QuizStatScreenState extends State<QuizStatRankScreen> {
                 ElevatedButton(
                   onPressed: () {
                     _database.sentPost(provider.totalScore.toString());
+                    _databaseHelper.insertScore(provider.totalScore);
                     provider.resetScore();
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/', (route) => false);
